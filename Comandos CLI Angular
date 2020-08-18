@@ -1,0 +1,10 @@
+======================|| COMANDOS CLI ANGULAR  ||======================
+////|Cria uma novo projeto de SPA|\\\\
+ng new <nome-do-projeto>
+
+////|Cria uma novo componente|\\\\
+ng generate component <nome-do-componente>
+
+////|Cria uma novo componente Guard|\\\\
+ng g g <diretorio>/<nome-do-componenteguard>
+

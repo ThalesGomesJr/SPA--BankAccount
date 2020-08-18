@@ -1,0 +1,101 @@
+<div class="card profile-card-4">
+<form class="mt-4" [formGroup]="registerForm">
+  <div class="form-row required">
+    <div class="form-group col-md-5 ml-4">
+      <label for="">Usuário:</label>
+      <input class="form-control" type="text" formControlName="userName"
+        [ngClass]="{'is-invalid': registerForm.get('userName').errors && registerForm.get('userName').touched}"
+        placeholder="Insira o Nome de Usuário"/>
+      <div *ngIf="registerForm.get('userName').hasError('required') && registerForm.get('userName').touched"
+        class="invalid-feedback">Usuário é obrigatório.
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="">Nome Completo:</label>
+      <input type="text" class="form-control" formControlName="fullName"
+      [ngClass]="{'is-invalid': registerForm.get('fullName').errors && registerForm.get('fullName').touched }"
+        placeholder="Insira o Nome Completo"/>
+      <div *ngIf="registerForm.get('fullName').hasError('required') && registerForm.get('fullName').touched"
+        class="invalid-feedback">Nome Completo é obrigatório.
+      </div>
+    </div>
+    <div class="form-group col-md-7 ml-4">
+      <label for="">Email:</label>
+      <input class="form-control" type="text" formControlName="email"
+        [ngClass]="{ 'is-invalid': registerForm.get('email').errors && registerForm.get('email').touched}"
+        placeholder="Insira o Email"/>
+      <div *ngIf="registerForm.get('email').hasError('required') && registerForm.get('email').touched"
+        class="invalid-feedback">E-mail é obrigatório.
+      </div>
+      <div *ngIf = "registerForm.get('email').hasError('email') && registerForm.get('email').touched" 
+        class="invalid-feedback">E-mail inválido.
+      </div>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label>Telefone</label>
+      <input type="text" mask="(00) 00000-0000" class="form-control" [ngClass]="{'is-invalid': registerForm.get('phoneNumber').errors 
+      && registerForm.get('phoneNumber').touched}" formControlName="phoneNumber" placeholder="(00) 00000-0000">
+      <div *ngIf="registerForm.get('phoneNumber').hasError('required') && registerForm.get('phoneNumber').touched" 
+        class="invalid-feedback">Telefone é obrigatório.
+      </div>
+    </div>
+
+    <div class="form-group col-md-4 ml-4">
+      <label for="">CPF:</label>
+      <input type="text" mask="000.000.000-00" class="form-control" formControlName="cpf"
+      [ngClass]="{'is-invalid': registerForm.get('cpf').errors && registerForm.get('cpf').touched }"
+        placeholder="Insira o seu CPF"/>
+      <div *ngIf="registerForm.get('cpf').hasError('required') && registerForm.get('cpf').touched"
+        class="invalid-feedback">CPF é obrigatório.
+      </div>
+    </div>
+    <div class="form-group col-md-7">
+      <label for="">Endereço:</label>
+      <input type="text" class="form-control" formControlName="address"
+      [ngClass]="{'is-invalid': registerForm.get('address').errors && registerForm.get('address').touched }"
+        placeholder="Insira o seu Endereço"/>
+      <div *ngIf="registerForm.get('address').hasError('required') && registerForm.get('address').touched"
+        class="invalid-feedback">Endereço é obrigatório.
+      </div>
+    </div>
+  </div>
+  <div class="form-row mb-5 ml-4" formGroupName="passwords">
+    <div class="form-group col-md-5 ml-4">
+      <label for="">Senha:</label>
+      <input class="form-control" type="password" formControlName="password"
+        [ngClass]="{ 'is-invalid': registerForm.get('passwords.password').errors && registerForm.get('passwords.password').touched}"
+        placeholder="Digite uma Senha" />
+        <div *ngIf="registerForm.get('passwords.password').hasError('minlength') && registerForm.get('passwords.password').touched"
+          class="invalid-feedback">Deve conter no mínimo 4 caracters
+        </div>
+      <div *ngIf="registerForm.get('passwords.password').hasError('required') && registerForm.get('passwords.password').touched"
+        class="invalid-feedback">Senha é obrigatório.
+      </div>
+    </div>
+    <div class="form-group col-md-5 ml-4">
+      <label for="">Confirmar Senha:</label>
+      <input class="form-control" type="password" formControlName="confirmPassword"
+        [ngClass]="{ 'is-invalid': registerForm.get('passwords.confirmPassword').errors 
+                    && registerForm.get('passwords.confirmPassword').touched 
+                    || registerForm.get('passwords.confirmPassword').hasError('mismatch') 
+                    && registerForm.get('passwords.confirmPassword').touched }"
+        placeholder="Confirme a Senha" />
+      <div *ngIf="registerForm.get('passwords.confirmPassword').hasError('required') && registerForm.get('passwords.confirmPassword').touched"
+        class="invalid-feedback">Confirme a Senha.
+      </div>
+      <div *ngIf="registerForm.get('passwords.confirmPassword').hasError('mismatch') && registerForm.get('passwords.confirmPassword').touched"
+        class="invalid-feedback">Confirmação não é valida
+      </div>
+    </div>
+  </div>
+  <div class="form row mt-4">
+    <div class="form-group col-md-4 offset-md-2">
+      <button class="btn btn-ln btn-success btn-block" [disabled] = "!registerForm.valid" (click)="cadastrarUsuario()"><i class="fas fa-save"></i>&nbsp;Cadastrar</button>
+    </div>
+    <div class="form-group col-md-4 ml-2 mb-4">    
+      <button class="btn btn-ln btn-danger btn-block" routerLink="/user/login" ><i class="fas fa-window-close"></i>&nbsp;Cancelar</button>
+    </div>
+  </div>
+</form>
+</div>
