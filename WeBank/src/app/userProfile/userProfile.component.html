@@ -6,11 +6,13 @@
                     <div class="card-title mb-4">
                         <div class="d-flex justify-content-start">
                             <div class="image-container">
-                                <img src="http://placehold.it/150x150" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
-                                <!--<div class="middle">
-                                    <input type="button" class="btn btn-secondary" id="btnChangePicture" value="Change" />
-                                    <input type="file" style="display: none;" id="profilePicture" name="file" />
-                                </div>-->
+                                <div class="middle">
+                                    <button class="btn btn-secondary" (click)="file.click()" *ngIf="!optionUpload()" > Alterar</button>
+                                    <button class="btn btn-secondary" (click)="uploadImagem()" *ngIf="optionUpload()" > Salvar</button>
+                                    <input type="file" #file (change)="onFileChange($event, $event.target.files)" accept=".png, .jpg, .jpeg" placeholder="" style="display: none">
+                                </div>
+                                <img [src]="imageURL" class="img-thumbnail" (click)="file.click()" id="imgProfile" style="cursor: pointer; width: 150px; height: 150px"
+                                alt="Card image cap" />
                             </div>
                             <div class="userData ml-3">
                                 <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">{{user.userName}}</h2>

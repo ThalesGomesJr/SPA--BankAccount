@@ -37,6 +37,14 @@ export class UserService {
     return this.http.put(`${this.baseURL}/updatepassword/${user.id}`, user);
   }
 
+  // tslint:disable-next-line: typedef
+  uploadImage(file: File, name: string){
+    const fileToUpload = file[0] as File;
+    const formData = new FormData();
+    formData.append('file', fileToUpload, name);
+    return this.http.post(`${this.baseURL}/upload`, formData);
+  }
+
   /*getEventoByTema(tema: string): Observable<Evento[]>{
     return this.http.get<Evento[]>(`${this.baseURL}/getByTema/${tema}`);
   }*/

@@ -9,6 +9,7 @@ export class User {
     password: string;
     fullName: string;
     numAccount: string;
+    imageURL: string;
     balance: number;
     savedBalance: number;
     cpf: string;

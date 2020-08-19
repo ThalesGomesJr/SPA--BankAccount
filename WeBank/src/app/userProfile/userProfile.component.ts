@@ -17,6 +17,11 @@ export class UserProfileComponent implements OnInit {
   user = new User();
   editForm: FormGroup;
   passwordForm: FormGroup;
+  imageURL = '';
+  file: File;
+  fileNameToUpload: string;
+  dateCurrent = '';
+  FileName = '';
 
   constructor(private userService: UserService, private toastr: ToastrService,
               private modalService: BsModalService, private fb: FormBuilder,
@@ -34,18 +39,10 @@ export class UserProfileComponent implements OnInit {
     this.acRouter.params.subscribe(params => {
       this.userService.getUserById(params.id).subscribe((user: User) => {
         this.user = Object.assign({}, user);
+        this.imageURL = `http://localhost:5000/Resources/Images/${this.user.imageURL}`;
+        this.FileName = '';
       });
     });
-    /*this.userService.getUserById(idUser).subscribe((user: User) => {
-      this.user = Object.assign({}, user);
-      console.log(user);
-      // this.fileNameToUpload = evento.imagemURL.toString();
-      // this.dataAtual = new Date().getMilliseconds().toString();
-      // this.imagemURL = `http://localhost:5000/Resources/Images/${this.evento.imagemURL}?_ts=${this.dataAtual}`;
-      //this.evento.imagemURL = '';
-      //this.registerForm.patchValue(this.evento);
-
-    });*/
   }
 
   // tslint:disable-next-line: typedef
@@ -128,6 +125,34 @@ export class UserProfileComponent implements OnInit {
         }
       );
     }
+  }
+
+  // tslint:disable-next-line: typedef
+  optionUpload(){
+    return this.FileName === this.fileNameToUpload;
+  }
+
+
+  // tslint:disable-next-line: typedef
+  onFileChange(archive: any, file: FileList){
+    const reader = new FileReader();
+
+    // tslint:disable-next-line: no-shadowed-variable
+    reader.onload = (event: any) => this.imageURL = event.target.result;
+    this.file = archive.target.files;
+    reader.readAsDataURL(file[0]);
+    // Nome do arquivo
+    this.dateCurrent = new Date().getMilliseconds().toString();
+    this.fileNameToUpload = this.user.userName + '-' + this.dateCurrent + '.png';
+    this.FileName = this.fileNameToUpload;
+  }
+
+  // tslint:disable-next-line: typedef
+  uploadImagem(){
+    this.userService.uploadImage(this.file, this.fileNameToUpload).subscribe(
+      () => {
+        this.getUser();
+      });
   }
 
   // tslint:disable-next-line: typedef
