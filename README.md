@@ -7,7 +7,7 @@
 
 #### Este projeto Utiliza:
 
-- Angular;
+- [Angular CLI](https://github.com/angular/angular-cli) version 10.0.4; 
 - TypeScript;
 - Bootstrap;
 - JSON Web Token - JWT;
