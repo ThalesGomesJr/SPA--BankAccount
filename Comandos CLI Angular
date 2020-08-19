@@ -1,4 +1,7 @@
 ======================|| COMANDOS CLI ANGULAR  ||======================
+////|Compila e sobe o servidor da SPA|\\\\
+ng serve
+
 ////|Cria uma novo projeto de SPA|\\\\
 ng new <nome-do-projeto>
 

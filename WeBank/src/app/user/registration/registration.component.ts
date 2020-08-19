@@ -28,19 +28,19 @@ export class RegistrationComponent implements OnInit {
     this.registerForm = this.fb.group({
       userName : ['', Validators.required],
       fullName : ['', Validators.required],
+      cpf: ['', Validators.required],
       email : ['', [Validators.required, Validators.email]],
       phoneNumber: ['', Validators.required],
-      cpf: ['', Validators.required],
       address: ['', Validators.required],
       passwords : this.fb.group({
         password : ['', [Validators.required, Validators.minLength(4)]],
         confirmPassword : ['', Validators.required]
-      }, { validators : this.compararSenhas })
+      }, { validators : this.verifyPassword })
     });
   }
 
   // tslint:disable-next-line: typedef
-  compararSenhas(fb: FormGroup){
+  verifyPassword(fb: FormGroup){
     const confirmSenhaCtrl = fb.get('confirmPassword');
     if (confirmSenhaCtrl.errors == null || 'mismatch' in confirmSenhaCtrl.errors) {
       if (fb.get('password').value !== confirmSenhaCtrl.value){
@@ -52,7 +52,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   // tslint:disable-next-line: typedef
-  cadastrarUsuario(){
+  registrationUser(){
     if (this.registerForm.valid) {
       this.user = Object.assign({password: this.registerForm.get('passwords.password').value}, this.registerForm.value);
       this.authService.register(this.user).subscribe(

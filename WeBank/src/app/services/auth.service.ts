@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 })
 export class AuthService {
 
-  baseURL = 'http://localhost:5000/api/user/';
+  baseURL = 'http://localhost:5000/api/user';
   jwtHelper = new JwtHelperService();
   decodedToken: any;
 
@@ -16,7 +16,7 @@ export class AuthService {
 
   // tslint:disable-next-line: typedef
   login(model: any){
-    return this.http.post(`${this.baseURL}login`, model).pipe(
+    return this.http.post(`${this.baseURL}/login`, model).pipe(
       map((response: any) => {
         const user = response;
         if (user) {
@@ -30,7 +30,7 @@ export class AuthService {
 
   // tslint:disable-next-line: typedef
   register(model: any){
-    return this.http.post(`${this.baseURL}register`, model);
+    return this.http.post(`${this.baseURL}/registration`, model);
   }
 
   // tslint:disable-next-line: typedef

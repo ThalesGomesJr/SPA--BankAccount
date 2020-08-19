@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-success mb-4" *ngIf="showMenu()">
   <div class="container">
-    <a class="navbar-brand" routerLink="home">WeBank</a>
+    <a class="navbar-brand" routerLink="['home']">WeBank</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -28,7 +28,7 @@
         aria-haspopup="true" aria-expanded="false" style="cursor: pointer; text-transform: capitalize;">
         <i class="fas fa-user-alt"></i> &nbsp; {{userName()}} </a>
         <div *dropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" style="cursor: pointer" routerLink="profile"><i class="fas fa-user-circle"></i>&nbsp;Perfil</a>
+          <a class="dropdown-item" (click)="getIdUser()" [routerLink]="['profile/', user.id]"  ><i class="fas fa-user-circle"></i>&nbsp;Perfil</a>
           <div role="separator" class="divider"></div>
           <a class="dropdown-item" (click) = "logout()" style="cursor: pointer"><i class="fas fa-sign-out-alt"></i> &nbsp;Sair</a>
         </div>

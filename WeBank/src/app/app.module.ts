@@ -8,6 +8,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgxMaskModule } from 'ngx-mask';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 // Componentes
 import { AppRoutingModule } from './app-routing.module';
@@ -21,15 +22,15 @@ import { AuthInterceptor } from 'src/app/auth/auth.interceptor';
 import { UserProfileComponent } from './userProfile/userProfile.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     NavComponent,
     UserComponent,
     LoginComponent,
     RegistrationComponent,
     HomeComponent,
-      UserProfileComponent
-   ],
+    UserProfileComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -37,6 +38,7 @@ import { UserProfileComponent } from './userProfile/userProfile.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    ModalModule.forRoot(),
     ToastrModule.forRoot(),
     BsDatepickerModule.forRoot(),
     BsDropdownModule.forRoot(),
