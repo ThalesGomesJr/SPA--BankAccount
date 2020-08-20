@@ -9,6 +9,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgxMaskModule } from 'ngx-mask';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 // Componentes
 import { AppRoutingModule } from './app-routing.module';
@@ -18,7 +19,7 @@ import { UserComponent } from './user/user.component';
 import { LoginComponent } from './user/login/login.component';
 import { RegistrationComponent } from './user/registration/registration.component';
 import { HomeComponent } from './home/home.component';
-import { AuthInterceptor } from 'src/app/auth/auth.interceptor';
+import { AuthInterceptor } from './auth/auth.interceptor';
 import { UserProfileComponent } from './userProfile/userProfile.component';
 
 @NgModule({
@@ -38,6 +39,7 @@ import { UserProfileComponent } from './userProfile/userProfile.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    CurrencyMaskModule,
     ModalModule.forRoot(),
     ToastrModule.forRoot(),
     BsDatepickerModule.forRoot(),

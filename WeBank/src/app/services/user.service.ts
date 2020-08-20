@@ -45,6 +45,11 @@ export class UserService {
     return this.http.post(`${this.baseURL}/upload`, formData);
   }
 
+  // tslint:disable-next-line: typedef
+  deposit(user: User){
+    return this.http.post(`${this.baseURL}/deposit/${user.id}`, user);
+  }
+
   /*getEventoByTema(tema: string): Observable<Evento[]>{
     return this.http.get<Evento[]>(`${this.baseURL}/getByTema/${tema}`);
   }*/

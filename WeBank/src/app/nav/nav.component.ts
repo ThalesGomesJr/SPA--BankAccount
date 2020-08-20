@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
+import { AuthUrlGuard } from '../auth/auth.urlguard';
 import { User } from '../models/User';
 
 @Component({
@@ -15,12 +16,10 @@ export class NavComponent implements OnInit {
   user = new User();
 
   constructor(private toastr: ToastrService, private authService: AuthService,
-              private userService: UserService, public router: Router) { }
+              private userService: UserService, private urlGuard: AuthUrlGuard, public router: Router) { }
 
   // tslint:disable-next-line: typedef
-  ngOnInit() {
-    this.getIdUser();
-  }
+  ngOnInit() {}
 
   // tslint:disable-next-line: typedef
   showMenu(){
@@ -49,6 +48,8 @@ export class NavComponent implements OnInit {
     const name = this.userName();
     this.userService.getUserByName(name).subscribe((user: User) => {
       this.user = Object.assign({}, user);
+      this.urlGuard.setToProfile(user.id);
+      this.router.navigateByUrl('profile', { state: { user }});
     });
   }
 

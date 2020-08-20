@@ -28,7 +28,7 @@
         aria-haspopup="true" aria-expanded="false" style="cursor: pointer; text-transform: capitalize;">
         <i class="fas fa-user-alt"></i> &nbsp; {{userName()}} </a>
         <div *dropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" (click)="getIdUser()" [routerLink]="['profile/', user.id]"  ><i class="fas fa-user-circle"></i>&nbsp;Perfil</a>
+          <a class="dropdown-item" (click)="getIdUser()" style="cursor: pointer"><i class="fas fa-user-circle"></i>&nbsp;Perfil</a>
           <div role="separator" class="divider"></div>
           <a class="dropdown-item" (click) = "logout()" style="cursor: pointer"><i class="fas fa-sign-out-alt"></i> &nbsp;Sair</a>
         </div>

@@ -158,8 +158,8 @@
                 </form>
             </div>
             <div class="modal-footer d-flex">
-                <button class="btn btn-danger" (click)="template.hide()"><i class="fas fa-window-close"></i>&nbsp;Cancelar</button>
-                <button class="btn btn-success ml-auto" (click)="saveEdit(template)" [disabled]="!editForm.valid"><i class="fas fa-save"></i> &nbsp;Salvar</button>
+                <button class="btn btn-success" (click)="saveEdit(template)" [disabled]="!editForm.valid"><i class="fas fa-save"></i> &nbsp;Salvar</button>
+                <button class="btn btn-danger ml-auto" (click)="template.hide()"><i class="fas fa-window-close"></i>&nbsp;Cancelar</button>
             </div>
         </div>
     </div>
@@ -170,7 +170,7 @@
 	<div class="modal-dialog modal-lg">
   		<div class="modal-content">
     		<div class="modal-header">
-      			<h4 class="modal-title pull-left"><i class="fa fa-key" aria-hidden="true"></i><i class="fas fa-user-edit"></i> Alterar Senha</h4>
+      			<h4 class="modal-title pull-left"><i class="fas fa-key"></i> <i class="fas fa-user-edit"></i> Alterar Senha</h4>
       			<button type="button" class="close pull-right" (click)="change.hide()" aria-label="Close">
         			<span aria-hidden="true">&times;</span>
       			</button>
@@ -209,8 +209,8 @@
                 </form>
             </div> 
             <div class="modal-footer d-flex">
-                <button class="btn btn-danger" (click)="change.hide()"><i class="fas fa-window-close"></i>&nbsp;Cancelar</button>
-                <button class="btn btn-success ml-auto" (click)="savePassword(change)" [disabled]="!passwordForm.valid"><i class="fas fa-save"></i> &nbsp;Salvar</button>
+                <button class="btn btn-success" (click)="savePassword(change)" [disabled]="!passwordForm.valid"><i class="fas fa-save"></i> &nbsp;Salvar</button>
+                <button class="btn btn-danger ml-auto" (click)="change.hide()"><i class="fas fa-window-close"></i>&nbsp;Cancelar</button>
             </div>
         </div>
 	</div>
@@ -231,7 +231,7 @@
       			<p>Tem certeza que deseja excluir sua conta no WeBank?</p>
     		</div>    
     		<div class="modal-footer btn-group d-flex">      
-      			<button  class="btn btn-success" (click)="confirm.hide()"><i class="fas fa-window-close"></i>&nbsp;Cancelar</button>
+      			<button class="btn btn-success" (click)="confirm.hide()"><i class="fas fa-window-close"></i>&nbsp;Cancelar</button>
       			<button class="btn btn-danger" (click)="confirmDelete(confirm)"><i class="fas fa-check"></i> &nbsp;Confirmar</button>
     		</div>
   		</div>
