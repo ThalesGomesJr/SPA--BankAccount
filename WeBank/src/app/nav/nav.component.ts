@@ -44,12 +44,31 @@ export class NavComponent implements OnInit {
   }
 
   // tslint:disable-next-line: typedef
+  routeSaveBalance(){
+    this.getIdUser();
+    this.urlGuard.setToProfile(this.user.id);
+    this.router.navigate(['balance/save']);
+  }
+
+  // tslint:disable-next-line: typedef
+  routeDeposit(){
+    this.getIdUser();
+    this.urlGuard.setToProfile(this.user.id);
+    this.router.navigate(['deposit']);
+  }
+
+  // tslint:disable-next-line: typedef
+  routeProfile(){
+    this.getIdUser();
+    this.urlGuard.setToProfile(this.user.id);
+    this.router.navigate(['profile']);
+  }
+
+  // tslint:disable-next-line: typedef
   getIdUser(){
     const name = this.userName();
     this.userService.getUserByName(name).subscribe((user: User) => {
       this.user = Object.assign({}, user);
-      this.urlGuard.setToProfile(user.id);
-      this.router.navigateByUrl('profile', { state: { user }});
     });
   }
 

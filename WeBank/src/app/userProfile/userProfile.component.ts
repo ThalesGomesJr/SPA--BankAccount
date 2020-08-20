@@ -113,7 +113,7 @@ export class UserProfileComponent implements OnInit {
           this.router.navigate(['/user/login']);
           this.toastr.success('Senha Alterada com Sucesso');
         }, () => {
-          this.toastr.error('Erro ao tentar Alterar Senha');
+          this.toastr.error('O Sistema Falhou, tente novamente mais tarde');
         }
       );
     }
@@ -129,7 +129,7 @@ export class UserProfileComponent implements OnInit {
           this.getUser();
           this.toastr.success('Editado com Sucesso');
         }, () => {
-          this.toastr.error('Erro ao tentar Editar');
+          this.toastr.error('O Sistema Falhou, tente novamente mais tarde');
         }
       );
     }
@@ -160,7 +160,10 @@ export class UserProfileComponent implements OnInit {
     this.userService.uploadImage(this.file, this.fileNameToUpload).subscribe(
       () => {
         this.getUser();
-      });
+      }, () => {
+        this.toastr.error('O Sistema Falhou, tente novamente mais tarde');
+      }
+    );
   }
 
   // tslint:disable-next-line: typedef
@@ -185,7 +188,7 @@ export class UserProfileComponent implements OnInit {
       this.router.navigate(['/user/login']);
       this.toastr.success('Conta Excluída com Sucesso');
       }, () => {
-        this.toastr.error('Erro ao tentar Deletar');
+        this.toastr.error('O Sistema Falhou, tente novamente mais tarde');
       }
     );
   }

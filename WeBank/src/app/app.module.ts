@@ -21,17 +21,21 @@ import { RegistrationComponent } from './user/registration/registration.componen
 import { HomeComponent } from './home/home.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { UserProfileComponent } from './userProfile/userProfile.component';
+import { DepositComponent } from './deposit/deposit.component';
+import { SaveBalanceComponent } from './saveBalance/saveBalance.component';
 
 @NgModule({
-  declarations: [
+  declarations: [		
     AppComponent,
     NavComponent,
     UserComponent,
     LoginComponent,
     RegistrationComponent,
     HomeComponent,
-    UserProfileComponent
-  ],
+    UserProfileComponent,
+    DepositComponent,
+    SaveBalanceComponent
+   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

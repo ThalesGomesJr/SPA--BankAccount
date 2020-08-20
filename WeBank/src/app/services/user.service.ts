@@ -50,6 +50,16 @@ export class UserService {
     return this.http.post(`${this.baseURL}/deposit/${user.id}`, user);
   }
 
+  // tslint:disable-next-line: typedef
+  saveMoney(user: User){
+    return this.http.post(`${this.baseURL}/savemoney/${user.id}`, user);
+  }
+
+  // tslint:disable-next-line: typedef
+  rescueMoney(user: User){
+    return this.http.post(`${this.baseURL}/rescuemoney/${user.id}`, user);
+  }
+
   /*getEventoByTema(tema: string): Observable<Evento[]>{
     return this.http.get<Evento[]>(`${this.baseURL}/getByTema/${tema}`);
   }*/

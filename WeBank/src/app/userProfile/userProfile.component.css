@@ -16,10 +16,6 @@ body{
     backface-visibility: hidden;
 }
 
-#btns {
-    justify-content: center;
-}
-
 .middle {
     transition: .5s ease;
     opacity: 0;

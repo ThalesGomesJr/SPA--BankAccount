@@ -1,5 +1,4 @@
 <div class="container mt-4">
- <h1> Refatorar depósito criando componente depósito</h1>
   <div class="row mbr-justify-content-center">
     <div class="col-lg-6 mbr-col-md-10">
         <a href="#" class="wrap">
@@ -13,7 +12,7 @@
           </a>
     </div>
     <div class="col-lg-6 mbr-col-md-10">
-        <a href="#" class="wrap">
+        <a (click)="routeSaveBalance()" style="cursor: pointer;" class="wrap">
             <div class="ico-wrap">
                 <i class="mbr-iconfont fas fa-piggy-bank"></i>
             </div>
@@ -24,7 +23,7 @@
             </a>
     </div>
     <div class="col-lg-6 mbr-col-md-10">
-        <a (click)="openDeposit(deposit)" style="cursor: pointer;" class="wrap">
+        <a (click)="routeDeposit()" style="cursor: pointer;" class="wrap">
             <div class="ico-wrap">
                 <i class="mbr-iconfont fas fa-donate"></i>
             </div>
@@ -45,37 +44,4 @@
             </div>
           </a>
     </div>
-</div>
-
-<!--MODAL Deposito-->
-<div bsModal #deposit="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name1">
-	<div class="modal-dialog">
-  		<div class="modal-content">
-    		<div class="modal-header">
-      			<h4 class="modal-title pull-left"><i class="fas fa-donate"></i> Realizar Depósito</h4>
-      			<button type="button" class="close pull-right" (click)="deposit.hide()" aria-label="Close">
-        			<span aria-hidden="true">&times;</span>
-      			</button>
-            </div>
-            <div class="modal-body ml-4">
-                <form class="ml-4" [formGroup] = "depositForm">
-                    <div class="form-row ml-4">
-                        <div class="form-group col-md-8 ml-4">
-                            <label for="">Valor do Depósito:</label>
-                            <input type="text" currencyMask [options] = "{ prefix: 'R$ ', thousands: '.' , decimal: ',' , align: 'left' }"  class="form-control" formControlName="value"
-                            [ngClass]="{'is-invalid': depositForm.get('value').errors && depositForm.get('value').touched }"
-                                placeholder="Insira o seu Endereço"/>
-                            <div *ngIf="depositForm.get('value').hasError('required') && depositForm.get('value').touched"
-                                class="invalid-feedback"> Valor é obrigatório.
-                            </div>
-                        </div>    
-                    </div>                    
-                </form>
-            </div> 
-            <div class="modal-footer btn-group d-flex">
-                <button class="btn btn-success" (click)="confirmDeposit(deposit)" [disabled]="!depositForm.valid"><i class="fas fa-donate"></i>&nbsp;Depositar</button>
-                <button class="btn btn-danger" (click)="deposit.hide()"><i class="fas fa-window-close"></i>&nbsp;Cancelar</button>
-            </div>
-        </div>
-	</div>
 </div>

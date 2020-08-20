@@ -1,0 +1,25 @@
+<div class="text-center" style="align-items: center;">
+  <form class="form-signin" [formGroup]="depositForm">
+    <div class="card profile-card-4">
+      <h4 class="mt-4"><i class="fas fa-donate"></i> Realizar Depósito</h4>
+      <div class="form-row" style="margin-left: 120px;">
+        <div class="form-group col-md-6 ml-4">
+          <label class="mt-4">Valor do Depósito:</label>
+          <input type="text" currencyMask [options] = "{ prefix: 'R$ ', thousands: '.' , decimal: ',' , align: 'left' }"  class="form-control" formControlName="value"
+          [ngClass]="{'is-invalid': depositForm.get('value').errors && depositForm.get('value').touched }"/>
+          <div *ngIf="depositForm.get('value').hasError('required') && depositForm.get('value').touched"
+              class="invalid-feedback"> Valor é obrigatório.
+          </div>
+        </div>    
+      </div>
+      <div class="form row mt-4">
+        <div class="form-group col-md-4 offset-md-2">
+          <button class="btn btn-success" (click)="confirmDeposit()" [disabled]="!depositForm.valid"><i class="fas fa-donate"></i>&nbsp;Depositar</button>
+        </div>
+        <div class="form-group col-md-4 ml-2 mb-4">    
+          <button class="btn btn-danger" routerLink="/home"><i class="fas fa-window-close"></i>&nbsp;Cancelar</button>
+        </div>
+      </div>
+    </div>          
+  </form>
+</div> 
