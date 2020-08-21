@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthUrlGuard } from '../auth/auth.urlguard';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../models/User';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-deposit',
@@ -19,28 +19,21 @@ export class DepositComponent implements OnInit {
 
 
   constructor(private userService: UserService, private toastr: ToastrService,
-              private fb: FormBuilder, private urlGuard: AuthUrlGuard, private router: Router) { }
+              private fb: FormBuilder, private acRoute: ActivatedRoute , private router: Router) { }
 
   // tslint:disable-next-line: typedef
   ngOnInit() {
-    this.userId = this.urlGuard.getToProfile();
     this.getUser();
     this.validationDeposit();
   }
 
   // tslint:disable-next-line: typedef
   getUser(){
-    if (this.userId){
-      this.userService.getUserById(this.userId).subscribe((user: User) => {
-        this.user = Object.assign({}, user);
-      });
-    }
-    else{
-      const name = sessionStorage.getItem('username');
-      this.userService.getUserByName(name).subscribe((user: User) => {
-        this.user = Object.assign({}, user);
-      });
-    }
+    const cryptoId = this.acRoute.snapshot.paramMap.get('id');
+    this.userId =  Number(CryptoJS.AES.decrypt(cryptoId, 'secretId').toString(CryptoJS.enc.Utf8));
+    this.userService.getUserById(this.userId).subscribe((user: User) => {
+      this.user = Object.assign({}, user);
+    });
   }
 
   // tslint:disable-next-line: typedef

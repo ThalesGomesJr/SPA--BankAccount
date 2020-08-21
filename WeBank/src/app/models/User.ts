@@ -1,6 +1,5 @@
-import { Extract } from './Extract';
-
 export class User {
+    
     constructor(){}
 
     id: number;
@@ -15,5 +14,4 @@ export class User {
     cpf: string;
     phoneNumber: string;
     address: string;
-    extract: Extract[];
 }

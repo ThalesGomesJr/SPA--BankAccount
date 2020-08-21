@@ -3,6 +3,7 @@ section {
     padding-bottom: 5rem;
     background-color: #f1f4fa;
 }
+
 .wrap {
     display: flex;
     background: white;
@@ -11,10 +12,12 @@ section {
     box-shadow: 7px 7px 30px -5px rgba(0,0,0,0.1);
     margin-bottom: 2rem;
 }
+
 .mbr-col-md-10 a {
     text-decoration: none;
     color: black;
 }
+
 .mbr-col-md-10 a:hover {
     color: white;
 }
@@ -34,6 +37,7 @@ section {
     margin: 1rem;
     padding-right: 1rem;
 }
+
 .vcenter {
     margin: auto;
 }
@@ -41,14 +45,17 @@ section {
 .mbr-section-title3 {
     text-align: left;
 }
+
 h2 {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
 }
+
 .display-5 {
     font-family: 'Source Sans Pro',sans-serif;
     font-size: 1.4rem;
 }
+
 .mbr-bold {
     font-weight: 700;
 }
@@ -58,6 +65,7 @@ p {
     padding-bottom: 0.5rem;
     line-height: 25px;
 }
+
 .display-6 {
     font-family: 'Source Sans Pro',sans-serif;
     font-size: 1re

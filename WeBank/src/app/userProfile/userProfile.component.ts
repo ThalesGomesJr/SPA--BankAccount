@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/User';
-// import { BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../services/user.service';
-import { AuthUrlGuard } from '../auth/auth.urlguard';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -26,11 +25,10 @@ export class UserProfileComponent implements OnInit {
   FileName = '';
 
   constructor(private userService: UserService, private toastr: ToastrService,
-              private fb: FormBuilder, private urlGuard: AuthUrlGuard, private router: Router) {}
+              private fb: FormBuilder,private acRoute: ActivatedRoute , private router: Router) {}
 
   // tslint:disable-next-line: typedef
   ngOnInit() {
-    this.userId = this.urlGuard.getToProfile();
     this.validationEdit();
     this.validationPassword();
     this.getUser();
@@ -38,21 +36,13 @@ export class UserProfileComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   getUser(){
-    if (this.userId){
-      this.userService.getUserById(this.userId).subscribe((user: User) => {
-        this.user = Object.assign({}, user);
-        this.imageURL = `http://localhost:5000/Resources/Images/${this.user.imageURL}`;
-        this.FileName = '';
-      });
-    }
-    else{
-      const name = sessionStorage.getItem('username');
-      this.userService.getUserByName(name).subscribe((user: User) => {
-        this.user = Object.assign({}, user);
-        this.imageURL = `http://localhost:5000/Resources/Images/${this.user.imageURL}`;
-        this.FileName = '';
-      });
-    }
+    const cryptoId = this.acRoute.snapshot.paramMap.get('id');
+    this.userId =  Number(CryptoJS.AES.decrypt(cryptoId, 'secretId').toString(CryptoJS.enc.Utf8));
+    this.userService.getUserById(this.userId).subscribe((user: User) => {
+      this.user = Object.assign({}, user);
+      this.imageURL = `http://localhost:5000/Resources/Images/${this.user.imageURL}`;
+      this.FileName = '';
+    });
   }
 
   // tslint:disable-next-line: typedef

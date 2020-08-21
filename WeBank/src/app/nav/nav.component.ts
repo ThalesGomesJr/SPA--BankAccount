@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
-import { AuthUrlGuard } from '../auth/auth.urlguard';
 import { User } from '../models/User';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-nav',
@@ -14,12 +14,15 @@ import { User } from '../models/User';
 export class NavComponent implements OnInit {
 
   user = new User();
+  userId: string;
 
   constructor(private toastr: ToastrService, private authService: AuthService,
-              private userService: UserService, private urlGuard: AuthUrlGuard, public router: Router) { }
+              private userService: UserService, public router: Router) { }
 
   // tslint:disable-next-line: typedef
-  ngOnInit() {}
+  ngOnInit() {
+    this.getIdUser();
+  }
 
   // tslint:disable-next-line: typedef
   showMenu(){
@@ -44,31 +47,11 @@ export class NavComponent implements OnInit {
   }
 
   // tslint:disable-next-line: typedef
-  routeSaveBalance(){
-    this.getIdUser();
-    this.urlGuard.setToProfile(this.user.id);
-    this.router.navigate(['balance/save']);
-  }
-
-  // tslint:disable-next-line: typedef
-  routeDeposit(){
-    this.getIdUser();
-    this.urlGuard.setToProfile(this.user.id);
-    this.router.navigate(['deposit']);
-  }
-
-  // tslint:disable-next-line: typedef
-  routeProfile(){
-    this.getIdUser();
-    this.urlGuard.setToProfile(this.user.id);
-    this.router.navigate(['profile']);
-  }
-
-  // tslint:disable-next-line: typedef
   getIdUser(){
     const name = this.userName();
     this.userService.getUserByName(name).subscribe((user: User) => {
       this.user = Object.assign({}, user);
+      this.userId = CryptoJS.AES.encrypt(this.user.id.toString(), 'secretId').toString();
     });
   }
 

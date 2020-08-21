@@ -25,7 +25,7 @@ import { DepositComponent } from './deposit/deposit.component';
 import { SaveBalanceComponent } from './saveBalance/saveBalance.component';
 
 @NgModule({
-  declarations: [		
+  declarations: [
     AppComponent,
     NavComponent,
     UserComponent,
@@ -34,7 +34,7 @@ import { SaveBalanceComponent } from './saveBalance/saveBalance.component';
     HomeComponent,
     UserProfileComponent,
     DepositComponent,
-    SaveBalanceComponent
+    SaveBalanceComponent,
    ],
   imports: [
     BrowserModule,

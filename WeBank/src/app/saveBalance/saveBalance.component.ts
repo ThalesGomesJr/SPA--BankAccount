@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/User';
-import { AuthUrlGuard } from '../auth/auth.urlguard';
 import { UserService } from '../services/user.service';
 import { ToastrService } from 'ngx-toastr';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -22,11 +21,10 @@ export class SaveBalanceComponent implements OnInit {
   rescueBalanceForm: FormGroup;
 
   constructor(private userService: UserService, private toastr: ToastrService,
-              private fb: FormBuilder, private urlGuard: AuthUrlGuard, private router: Router) { }
+              private fb: FormBuilder, private acRoute: ActivatedRoute) { }
 
   // tslint:disable-next-line: typedef
   ngOnInit() {
-    this.userId = this.urlGuard.getToProfile();
     this.getUser();
     this.validationSaveBalance();
     this.validationRescueBalance();
@@ -34,19 +32,12 @@ export class SaveBalanceComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   getUser(){
-    if (this.userId){
-      this.userService.getUserById(this.userId).subscribe((user: User) => {
-        this.user = Object.assign({}, user);
-        this.savedBalance = new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(this.user.savedBalance);
-      });
-    }
-    else{
-      const name = sessionStorage.getItem('username');
-      this.userService.getUserByName(name).subscribe((user: User) => {
-        this.user = Object.assign({}, user);
-        this.savedBalance = new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(this.user.savedBalance);
-      });
-    }
+    const cryptoId = this.acRoute.snapshot.paramMap.get('id');
+    this.userId =  Number(CryptoJS.AES.decrypt(cryptoId, 'secretId').toString(CryptoJS.enc.Utf8));
+    this.userService.getUserById(this.userId).subscribe((user: User) => {
+      this.user = Object.assign({}, user);
+      this.savedBalance = new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(this.user.savedBalance);
+    });
   }
 
   // tslint:disable-next-line: typedef
@@ -113,5 +104,4 @@ export class SaveBalanceComponent implements OnInit {
       }
     }
   }
-
 }

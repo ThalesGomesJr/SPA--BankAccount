@@ -1,18 +1,18 @@
 <div class="container mt-4">
   <div class="row mbr-justify-content-center">
     <div class="col-lg-6 mbr-col-md-10">
-        <a href="#" class="wrap">
+        <a class="wrap">
             <div class="ico-wrap">
-                <i class="mbr-iconfont fas fa-file-invoice-dollar"></i>
+                <i class="mbr-iconfont fas fa-coins"></i>
             </div>
             <div class="text-wrap vcenter">
-                <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Conta Corrente</h2>
-                <p class="mbr-fonts-style text1 mbr-text display-6">Visualize seu saldo atual e o extrato das suas transações bancarias.</p>
+                <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Saldo na Conta Corrente</h2>
+                <h2 class="mbr-fonts-style text1 mbr-text display-6">{{ balance }}</h2>
             </div>
           </a>
     </div>
     <div class="col-lg-6 mbr-col-md-10">
-        <a (click)="routeSaveBalance()" style="cursor: pointer;" class="wrap">
+        <a [routerLink] = "['/balance/save', userId]" style="cursor: pointer;" class="wrap">
             <div class="ico-wrap">
                 <i class="mbr-iconfont fas fa-piggy-bank"></i>
             </div>
@@ -23,7 +23,7 @@
             </a>
     </div>
     <div class="col-lg-6 mbr-col-md-10">
-        <a (click)="routeDeposit()" style="cursor: pointer;" class="wrap">
+        <a [routerLink] = "['/deposit', userId]" style="cursor: pointer;" class="wrap">
             <div class="ico-wrap">
                 <i class="mbr-iconfont fas fa-donate"></i>
             </div>

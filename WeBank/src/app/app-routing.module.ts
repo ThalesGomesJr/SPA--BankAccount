@@ -17,9 +17,9 @@ const routes: Routes = [
     ]
   },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
-  { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard]},
-  { path: 'balance/save', component: SaveBalanceComponent, canActivate: [AuthGuard]},
-  { path: 'deposit', component: DepositComponent, canActivate: [AuthGuard]},
+  { path: 'profile/:id', component: UserProfileComponent, canActivate: [AuthGuard]},
+  { path: 'balance/save/:id', component: SaveBalanceComponent, canActivate: [AuthGuard]},
+  { path: 'deposit/:id', component: DepositComponent, canActivate: [AuthGuard]},
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];
