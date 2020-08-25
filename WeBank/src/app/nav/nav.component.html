@@ -8,6 +8,9 @@
     <div *ngIf = "!loggedIn()" class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link btn btn-success" [routerLink] = "['/balance/extract', userId]" style="cursor: pointer;">Conta Corrente </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
           <a class="nav-link btn btn-success" [routerLink] = "['/balance/save', userId]" style="cursor: pointer;">Guardar Dinheiro </a>
         </li>
         <li class="nav-item" routerLinkActive="active">

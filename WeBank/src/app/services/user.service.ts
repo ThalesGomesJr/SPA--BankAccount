@@ -60,6 +60,10 @@ export class UserService {
     return this.http.post(`${this.baseURL}/rescuemoney/${user.id}`, user);
   }
 
+  getUserExtractById(id: number): Observable<User>{
+    return this.http.get<User>(`${this.baseURL}/extract/${id}`);
+  }
+
   /*getEventoByTema(tema: string): Observable<Evento[]>{
     return this.http.get<Evento[]>(`${this.baseURL}/getByTema/${tema}`);
   }*/

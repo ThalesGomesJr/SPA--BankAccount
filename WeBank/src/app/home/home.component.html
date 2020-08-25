@@ -1,13 +1,13 @@
 <div class="container mt-4">
   <div class="row mbr-justify-content-center">
     <div class="col-lg-6 mbr-col-md-10">
-        <a class="wrap">
+        <a [routerLink] = "['/balance/extract', userId]" style="cursor: pointer;" class="wrap">
             <div class="ico-wrap">
                 <i class="mbr-iconfont fas fa-coins"></i>
             </div>
             <div class="text-wrap vcenter">
-                <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Saldo na Conta Corrente</h2>
-                <h2 class="mbr-fonts-style text1 mbr-text display-6">{{ balance }}</h2>
+                <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Conta Corrente</h2>
+                <p class="mbr-fonts-style text1 mbr-text display-6">Visualize o seu saldo disponível e seu extrato de movimentações.</p>
             </div>
           </a>
     </div>

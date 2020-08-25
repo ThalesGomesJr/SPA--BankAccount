@@ -23,9 +23,9 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { UserProfileComponent } from './userProfile/userProfile.component';
 import { DepositComponent } from './deposit/deposit.component';
 import { SaveBalanceComponent } from './saveBalance/saveBalance.component';
-
+import { ExtractComponent } from './extract/extract.component';
 @NgModule({
-  declarations: [
+  declarations: [		
     AppComponent,
     NavComponent,
     UserComponent,
@@ -35,6 +35,7 @@ import { SaveBalanceComponent } from './saveBalance/saveBalance.component';
     UserProfileComponent,
     DepositComponent,
     SaveBalanceComponent,
+    ExtractComponent
    ],
   imports: [
     BrowserModule,

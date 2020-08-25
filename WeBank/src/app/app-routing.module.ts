@@ -5,6 +5,7 @@ import { LoginComponent } from './user/login/login.component';
 import { RegistrationComponent } from './user/registration/registration.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth/auth.guard';
+import { ExtractComponent } from './extract/extract.component';
 import { UserProfileComponent } from './userProfile/userProfile.component';
 import { SaveBalanceComponent } from './saveBalance/saveBalance.component';
 import { DepositComponent } from './deposit/deposit.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
     ]
   },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  { path: 'balance/extract/:id', component: ExtractComponent, canActivate: [AuthGuard]},
   { path: 'profile/:id', component: UserProfileComponent, canActivate: [AuthGuard]},
   { path: 'balance/save/:id', component: SaveBalanceComponent, canActivate: [AuthGuard]},
   { path: 'deposit/:id', component: DepositComponent, canActivate: [AuthGuard]},
