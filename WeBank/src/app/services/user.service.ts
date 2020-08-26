@@ -64,9 +64,13 @@ export class UserService {
     return this.http.get<User>(`${this.baseURL}/extract/${id}`);
   }
 
-  /*getEventoByTema(tema: string): Observable<Evento[]>{
-    return this.http.get<Evento[]>(`${this.baseURL}/getByTema/${tema}`);
-  }*/
+  getUserByNumAccount(numAccount: string): Observable<User>{
+    return this.http.get<User>(`${this.baseURL}/numAccount/${numAccount}`);
+  }
 
+  // tslint:disable-next-line: typedef
+  transfer(user: User, numAccount: number){
+    return this.http.post(`${this.baseURL}/transfer/${user.id}/${numAccount}`, user);
+  }
 
 }

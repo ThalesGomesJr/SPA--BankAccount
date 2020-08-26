@@ -46,11 +46,10 @@ export class DepositComponent implements OnInit {
   // tslint:disable-next-line: typedef
   confirmDeposit(){
     if (this.depositForm.valid){
-      const valueDeposit = Number(this.depositForm.get('value').value);
-      this.user.balance = valueDeposit;
+      this.user.balance = Number(this.depositForm.get('value').value);
       this.userService.deposit(this.user).subscribe(
         () => {
-          this.router.navigate(['home']);
+          this.depositForm.reset();
           this.toastr.success('Depósito Realizado com Sucesso');
         }, () => {
           this.toastr.error('O Sistema Falhou, tente novamente mais tarde');

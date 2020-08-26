@@ -25,7 +25,7 @@ export class UserProfileComponent implements OnInit {
   FileName = '';
 
   constructor(private userService: UserService, private toastr: ToastrService,
-              private fb: FormBuilder,private acRoute: ActivatedRoute , private router: Router) {}
+              private fb: FormBuilder, private acRoute: ActivatedRoute , private router: Router) {}
 
   // tslint:disable-next-line: typedef
   ngOnInit() {

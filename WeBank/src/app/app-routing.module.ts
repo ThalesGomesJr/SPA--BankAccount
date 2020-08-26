@@ -9,6 +9,7 @@ import { ExtractComponent } from './extract/extract.component';
 import { UserProfileComponent } from './userProfile/userProfile.component';
 import { SaveBalanceComponent } from './saveBalance/saveBalance.component';
 import { DepositComponent } from './deposit/deposit.component';
+import { TransferComponent } from './transfer/transfer.component';
 
 const routes: Routes = [
   { path: 'user', component: UserComponent,
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'profile/:id', component: UserProfileComponent, canActivate: [AuthGuard]},
   { path: 'balance/save/:id', component: SaveBalanceComponent, canActivate: [AuthGuard]},
   { path: 'deposit/:id', component: DepositComponent, canActivate: [AuthGuard]},
+  { path: 'transfer/:id', component: TransferComponent, canActivate: [AuthGuard]},
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];

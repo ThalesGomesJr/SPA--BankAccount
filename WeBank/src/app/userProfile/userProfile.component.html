@@ -17,7 +17,7 @@
                             <div class="userData ml-3">
                                 <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">{{user.userName}}</h2>
                                 <h6>Agência: 0000-1</h6>
-                                <h6>Conta Corrente: {{user.numAccount}}</h6>
+                                <h6>Conta Corrente: {{user.numAccount | mask: '000000-00'}}</h6>
                             </div>
                             <div class="ml-auto">
                                 <input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />

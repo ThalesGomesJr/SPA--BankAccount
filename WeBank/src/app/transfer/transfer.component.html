@@ -1,0 +1,32 @@
+  <form class="form-signin" [formGroup] = "transferForm">
+    <div class="card profile-card-4">
+      <h4 class="mt-4 text-center"><i class="fas fa-exchange-alt"></i> Realizar Transferência</h4>
+      <div class="form-row" style="margin-top: 20px;">
+          <div class="form-group col-md-4" style="margin-left: 140px;">
+            <label for="">Número da Conta Destinatária:</label>
+            <input class="form-control" mask="000000-00" type="text" formControlName="numAccount"
+                [ngClass]="{'is-invalid': transferForm.get('numAccount').errors && transferForm.get('numAccount').touched}"
+                placeholder="Insira o Número da conta"/>
+            <div *ngIf="transferForm.get('numAccount').hasError('required') && transferForm.get('numAccount').touched"
+                class="invalid-feedback">Número da Conta Destinatária é obrigatório.
+            </div>
+          </div>               
+          <div class="form-group col-md-3" style="margin-left: 50px;">
+            <label for="">Valor:</label>
+            <input type="text" currencyMask [options] = "{ prefix: 'R$ ', thousands: '.' , decimal: ',' , align: 'left' }"  class="form-control" formControlName="value"
+              [ngClass]="{'is-invalid': transferForm.get('value').errors && transferForm.get('value').touched }"/>
+              <div *ngIf="transferForm.get('value').hasError('required') && transferForm.get('value').touched"
+                  class="invalid-feedback"> Valor é obrigatório.
+              </div>
+          </div>
+      </div>
+      <div class="form row mt-4">
+        <div class="form-group col-md-4 offset-md-2">
+          <button class="btn btn-success btn-block" (click)="confirmTransfer()" [disabled]="!transferForm.valid"><i class="fas fa-exchange-alt"></i>&nbsp;Confirmar Transferência</button>
+        </div>
+        <div class="form-group col-md-4 ml-2 mb-4">    
+          <button class="btn btn-danger btn-block" routerLink="/home"><i class="fas fa-window-close"></i>&nbsp;Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </form>

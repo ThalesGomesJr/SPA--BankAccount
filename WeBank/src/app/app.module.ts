@@ -24,8 +24,9 @@ import { UserProfileComponent } from './userProfile/userProfile.component';
 import { DepositComponent } from './deposit/deposit.component';
 import { SaveBalanceComponent } from './saveBalance/saveBalance.component';
 import { ExtractComponent } from './extract/extract.component';
+import { TransferComponent } from './transfer/transfer.component';
 @NgModule({
-  declarations: [		
+  declarations: [
     AppComponent,
     NavComponent,
     UserComponent,
@@ -35,7 +36,8 @@ import { ExtractComponent } from './extract/extract.component';
     UserProfileComponent,
     DepositComponent,
     SaveBalanceComponent,
-    ExtractComponent
+    ExtractComponent,
+    TransferComponent
    ],
   imports: [
     BrowserModule,
