@@ -8,16 +8,16 @@
     <div *ngIf = "!loggedIn()" class="collapse navbar-collapse" id="navbarDefault">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link btn btn-success" [routerLink] = "['/balance/extract', userId]" style="cursor: pointer;">Conta Corrente </a>
+          <a class="nav-link btn btn-success" (click)="extract()" style="cursor: pointer;">Conta Corrente </a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link btn btn-success" [routerLink] = "['/balance/save', userId]" style="cursor: pointer;">Guardar Dinheiro </a>
+          <a class="nav-link btn btn-success" (click)="savedBalance()" style="cursor: pointer;">Guardar Dinheiro </a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link btn btn-success" [routerLink] = "['/deposit', userId]" style="cursor: pointer;">Depósito </a>
+        <a class="nav-link btn btn-success" (click)="deposit()" style="cursor: pointer;">Depósito </a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link btn btn-success" [routerLink] = "['/transfer', userId]" style="cursor: pointer;">Transfêrencia </a>
+          <a class="nav-link btn btn-success" (click)="transfer()" style="cursor: pointer;">Transfêrencia </a>
         </li>
       </ul>
     </div>
@@ -28,7 +28,7 @@
         aria-haspopup="true" aria-expanded="false" style="cursor: pointer; text-transform: capitalize;">
         <i class="fas fa-user-alt"></i> &nbsp; {{userName()}} </a>
         <div *dropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" [routerLink] = "['/profile', userId]" style="cursor: pointer"><i class="fas fa-user-circle"></i>&nbsp;Perfil</a>
+          <a class="dropdown-item" (click)="profile()" style="cursor: pointer"><i class="fas fa-user-circle"></i>&nbsp;Perfil</a>
           <div role="separator" class="divider"></div>
           <a class="dropdown-item" (click) = "logout()" style="cursor: pointer"><i class="fas fa-sign-out-alt"></i> &nbsp;Sair</a>
         </div>
