@@ -1,4 +1,4 @@
-# SPA (Single-Page Application) do Projeto WeBank.
+# SPA (Single-Page Application) do Projeto BankAccount.
 
 > Projeto Concluído!
 
